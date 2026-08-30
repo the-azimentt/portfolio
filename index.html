@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Иван Фамилия — видеомонтажёр</title>
+<meta name="description" content="Портфолио видеомонтажёра. Монтаж, цветокоррекция, звук, экспорт под любые площадки.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="scanlines"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a href="#hero" class="nav-logo">И.&nbsp;ФАМИЛИЯ<span>монтажёр&nbsp;/&nbsp;editor</span></a>
+
+  <nav class="nav-links" aria-label="Разделы сайта">
+    <a href="#about">О себе</a>
+    <a href="#reel">Работы</a>
+    <a href="#process">Процесс</a>
+    <a href="#skills">Навыки</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+
+  <div class="rec-indicator" aria-hidden="true">
+    <span class="rec-dot"></span>REC
+  </div>
+
+  <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ TIMELINE SCRUBBER (signature element) ============ -->
+<div class="timeline-bar" aria-hidden="true">
+  <div class="timeline-track" id="timelineTrack">
+    <div class="timeline-progress" id="timelineProgress"></div>
+    <div class="timeline-playhead" id="timelinePlayhead"></div>
+  </div>
+  <div class="timeline-readout">
+    <span class="timeline-clip" id="timelineClip">HERO.MOV</span>
+    <span class="timeline-tc" id="timelineTC">00:00:00:00</span>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="section hero" data-clip="SHOWREEL_2026.MOV">
+  <div class="letterbox letterbox-top"></div>
+  <div class="letterbox letterbox-bottom"></div>
+
+  <div class="hero-frame">
+    <span class="frame-corner tl" aria-hidden="true"></span>
+    <span class="frame-corner tr" aria-hidden="true"></span>
+    <span class="frame-corner bl" aria-hidden="true"></span>
+    <span class="frame-corner br" aria-hidden="true"></span>
+
+    <p class="hero-eyebrow">РОЛЬ / ROLE</p>
+    <h1 class="hero-title">ИВАН<br>ФАМИЛИЯ</h1>
+    <p class="hero-role">видеомонтажёр — склейка, ритм, цвет, звук</p>
+
+    <div class="hero-meta">
+      <span>REEL 2021–2026</span>
+      <span class="dot-sep">•</span>
+      <span>16:9 / 9:16 / 2.39:1</span>
+      <span class="dot-sep">•</span>
+      <span>24 / 25 / 30 fps</span>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-cue">
+    <span>SCROLL</span>
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none"><path d="M7 1v17M1 12l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="section about" data-clip="META_DATA.TXT">
+  <div class="section-head">
+    <span class="section-tag">01 — О СЕБЕ</span>
+    <h2 class="section-title">Метаданные</h2>
+  </div>
+
+  <div class="meta-panel reveal">
+    <div class="meta-panel-bar">
+      <span class="meta-panel-btn"></span><span class="meta-panel-btn"></span><span class="meta-panel-btn"></span>
+      <span class="meta-panel-name">clip_info.inspector</span>
+    </div>
+
+    <div class="meta-grid">
+      <div class="meta-row">
+        <span class="meta-label">Имя</span>
+        <span class="meta-value">Иван Фамилия</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Специализация</span>
+        <span class="meta-value">Монтаж, цветокоррекция, саунд-дизайн</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Опыт</span>
+        <span class="meta-value">5&nbsp;лет · 200+ проектов</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Форматы</span>
+        <span class="meta-value">Реклама, клипы, YouTube, соцсети, документалистика</span>
+      </div>
+      <div class="meta-row meta-row-wide">
+        <span class="meta-label">Описание</span>
+        <span class="meta-value">
+          Собираю из отснятого материала историю с чётким ритмом и понятной драматургией.
+          Умею работать с большим объёмом футажа, держать дедлайны и объяснять решения
+          по монтажу простым языком — без профессионального жаргона, если он не нужен.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REEL / WORKS ============ -->
+<section id="reel" class="section reel" data-clip="REEL_GRID.MP4">
+  <div class="section-head">
+    <span class="section-tag">02 — РАБОТЫ</span>
+    <h2 class="section-title">Избранные клипы</h2>
+  </div>
+
+  <div class="reel-grid">
+
+    <article class="clip-card reveal" style="--grade:#9CAF97">
+      <div class="clip-thumb clip-thumb--a">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">02:14</span>
+      </div>
+      <div class="clip-info">
+        <h3>Бренд-ролик «Северный свет»</h3>
+        <p>Коммерческая реклама · цветокоррекция + монтаж</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>Premiere Pro</span></div>
+      </div>
+    </article>
+
+    <article class="clip-card reveal" style="--grade:#D8C4A8">
+      <div class="clip-thumb clip-thumb--b">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">00:47</span>
+      </div>
+      <div class="clip-info">
+        <h3>Reels для бренда одежды</h3>
+        <p>Соцсети · динамичный монтаж под тренды</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>9:16</span><span>DaVinci Resolve</span></div>
+      </div>
+    </article>
+
+    <article class="clip-card reveal" style="--grade:#9AACC0">
+      <div class="clip-thumb clip-thumb--c">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">08:32</span>
+      </div>
+      <div class="clip-info">
+        <h3>Документальный мини-фильм</h3>
+        <p>YouTube · сторителлинг, интершум, титры</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>2.39:1</span><span>After Effects</span></div>
+      </div>
+    </article>
+
+    <article class="clip-card reveal" style="--grade:#B7A8C9">
+      <div class="clip-thumb clip-thumb--d">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">03:05</span>
+      </div>
+      <div class="clip-info">
+        <h3>Музыкальный клип «Тени»</h3>
+        <p>Клип · монтаж под ритм, цветовой грейд</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>DaVinci Resolve</span></div>
+      </div>
+    </article>
+
+    <article class="clip-card reveal" style="--grade:#9CAF97">
+      <div class="clip-thumb clip-thumb--a">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">01:30</span>
+      </div>
+      <div class="clip-info">
+        <h3>Промо мероприятия</h3>
+        <p>Афтер-муви · быстрый оборот, live-съёмка</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>Premiere Pro</span></div>
+      </div>
+    </article>
+
+    <article class="clip-card reveal" style="--grade:#D8C4A8">
+      <div class="clip-thumb clip-thumb--b">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">00:59</span>
+      </div>
+      <div class="clip-info">
+        <h3>Shorts для блогера</h3>
+        <p>Соцсети · субтитры, звуковые акценты</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>9:16</span><span>CapCut</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process" class="section process" data-clip="PIPELINE.PRPROJ">
+  <div class="section-head">
+    <span class="section-tag">03 — ПРОЦЕСС</span>
+    <h2 class="section-title">Как строится монтаж</h2>
+  </div>
+
+  <ol class="pipeline reveal">
+    <li class="pipeline-step">
+      <span class="pipeline-num">01</span>
+      <div class="pipeline-body">
+        <h3>Черновой монтаж</h3>
+        <p>Отбираю дубли, выстраиваю структуру и ритм истории — без эффектов и цвета, только суть.</p>
+      </div>
+    </li>
+    <li class="pipeline-step">
+      <span class="pipeline-num">02</span>
+      <div class="pipeline-body">
+        <h3>Цветокоррекция</h3>
+        <p>Выравниваю экспозицию и баланс белого между дублями, затем накладываю единый грейд.</p>
+      </div>
+    </li>
+    <li class="pipeline-step">
+      <span class="pipeline-num">03</span>
+      <div class="pipeline-body">
+        <h3>Звук и озвучка</h3>
+        <p>Чищу шумы, свожу музыку и голос, добавляю акценты там, где важна динамика.</p>
+      </div>
+    </li>
+    <li class="pipeline-step">
+      <span class="pipeline-num">04</span>
+      <div class="pipeline-body">
+        <h3>Экспорт и доставка</h3>
+        <p>Рендерю под нужные площадки: разрешение, формат, битрейт, соотношение сторон.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="section skills" data-clip="FORMATS.LIST">
+  <div class="section-head">
+    <span class="section-tag">04 — НАВЫКИ</span>
+    <h2 class="section-title">Инструменты и форматы</h2>
+  </div>
+
+  <div class="chip-group reveal">
+    <span class="chip">Premiere Pro</span>
+    <span class="chip">DaVinci Resolve</span>
+    <span class="chip">After Effects</span>
+    <span class="chip">Final Cut Pro</span>
+    <span class="chip">Audition</span>
+    <span class="chip">Photoshop</span>
+    <span class="chip">CapCut</span>
+    <span class="chip">Frame.io</span>
+  </div>
+
+  <div class="chip-group chip-group--secondary reveal">
+    <span class="chip chip--ghost">Цветокоррекция</span>
+    <span class="chip chip--ghost">Саунд-дизайн</span>
+    <span class="chip chip--ghost">Моушн-титры</span>
+    <span class="chip chip--ghost">Ресайз под соцсети</span>
+    <span class="chip chip--ghost">Субтитры</span>
+    <span class="chip chip--ghost">Работа с большим футажом</span>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section contact" data-clip="EXPORT_SETTINGS.PRESET">
+  <div class="section-head">
+    <span class="section-tag">05 — КОНТАКТЫ</span>
+    <h2 class="section-title">Настройки экспорта</h2>
+  </div>
+
+  <div class="export-panel reveal">
+    <div class="export-row">
+      <span class="export-label">Почта</span>
+      <a class="export-value" href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+    <div class="export-row">
+      <span class="export-label">Telegram</span>
+      <a class="export-value" href="https://t.me/username" target="_blank" rel="noopener">@username</a>
+    </div>
+    <div class="export-row">
+      <span class="export-label">Behance</span>
+      <a class="export-value" href="https://behance.net/username" target="_blank" rel="noopener">behance.net/username</a>
+    </div>
+    <div class="export-row">
+      <span class="export-label">Vimeo</span>
+      <a class="export-value" href="https://vimeo.com/username" target="_blank" rel="noopener">vimeo.com/username</a>
+    </div>
+
+    <a href="mailto:hello@example.com" class="export-cta">
+      ЭКСПОРТ СООБЩЕНИЯ <span>→</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="vu-meter" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <p class="footer-text">© 2026 Иван Фамилия · собрано покадрово</p>
+
+  <a href="#hero" class="footer-back">⏮ К НАЧАЛУ</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
