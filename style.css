@@ -181,10 +181,59 @@ main{ position: relative; z-index: 1; }
   padding-top: 0; padding-bottom: 0;
   max-width: none;
   text-align: center;
+  overflow: hidden;
 }
-.letterbox{ position: absolute; left:0; right:0; height: 48px; background: #000; z-index: 1; }
+.letterbox{ position: absolute; left:0; right:0; height: 48px; background: #000; z-index: 2; }
 .letterbox-top{ top:0; }
 .letterbox-bottom{ bottom:0; }
+
+/* ---- background filmstrip carousel (vertical clips, reel-style) ---- */
+.hero-reel{
+  position: absolute; inset: 0; z-index: 0;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-reel-track{
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 6px;
+  animation: heroReelScroll 48s linear infinite;
+  will-change: transform;
+}
+.reel-item{
+  position: relative; flex: 0 0 auto;
+  width: clamp(110px, 13vw, 180px);
+  aspect-ratio: 9 / 16;
+  border-radius: 3px;
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, rgba(255,255,255,0.03), transparent 40%),
+    linear-gradient(200deg, #1d1d20, #0c0c0d 70%);
+  border: 1px solid rgba(244,244,242,0.06);
+  filter: grayscale(0.5) brightness(0.5) contrast(1.05);
+}
+.reel-item video{
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+@keyframes heroReelScroll{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+.hero-reel-sprockets{
+  position: absolute; left:0; right:0; height: 16px; z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+  background-image: radial-gradient(circle, rgba(0,0,0,0.85) 3px, transparent 3.2px);
+  background-size: 24px 16px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+.sprockets-top{ top: 0; }
+.sprockets-bottom{ bottom: 0; }
+.hero-reel-fade{
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(10,10,11,0.82) 0%, rgba(10,10,11,0.6) 45%, rgba(10,10,11,0.88) 100%),
+    linear-gradient(to bottom, rgba(10,10,11,0.5) 0%, transparent 18%, transparent 82%, rgba(10,10,11,0.5) 100%);
+}
 
 .hero-frame{
   position: relative; z-index: 2;
@@ -309,44 +358,6 @@ main{ position: relative; z-index: 1; }
 }
 
 /* ===================================================================
-   PROCESS — pipeline
-=================================================================== */
-.pipeline{
-  position: relative;
-  display: flex; flex-direction: column; gap: 0;
-}
-.pipeline::before{
-  content:''; position: absolute; left: 27px; top: 12px; bottom: 12px; width: 1px;
-  background: var(--line);
-}
-.pipeline-step{
-  position: relative; display: flex; gap: 28px;
-  padding: 26px 0; border-bottom: 1px solid var(--line-soft);
-}
-.pipeline-step:last-child{ border-bottom: none; }
-.pipeline-num{
-  position: relative; z-index: 1;
-  flex-shrink: 0; width: 54px; height: 54px; border-radius: 50%;
-  background: var(--panel); border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono); font-size: 14px; color: var(--grey-lt);
-}
-.pipeline-body h3{ font-size: 19px; font-weight: 600; margin-bottom: 8px; }
-.pipeline-body p{ color: var(--grey); font-size: 14px; max-width: 520px; }
-
-/* ===================================================================
-   SKILLS — chips
-=================================================================== */
-.chip-group{ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-.chip{
-  font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.03em;
-  padding: 9px 16px; border-radius: 100px;
-  border: 1px solid var(--line); background: var(--panel);
-  color: var(--grey-lt);
-}
-.chip--ghost{ background: transparent; color: var(--grey); }
-
-/* ===================================================================
    CONTACT — export panel
 =================================================================== */
 .export-panel{
@@ -425,8 +436,6 @@ main{ position: relative; z-index: 1; }
   .reel-grid{ grid-template-columns: 1fr; }
   .rec-indicator{ display: none; }
   .timeline-bar{ top: 54px; }
-  .pipeline-step{ gap: 18px; }
-  .pipeline-num{ width: 44px; height: 44px; font-size: 12px; }
   .export-row{ flex-direction: column; align-items: flex-start; gap: 4px; }
   .letterbox{ height: 28px; }
 }

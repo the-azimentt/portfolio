@@ -24,8 +24,6 @@
   <nav class="nav-links" aria-label="Разделы сайта">
     <a href="#about">О себе</a>
     <a href="#reel">Работы</a>
-    <a href="#process">Процесс</a>
-    <a href="#skills">Навыки</a>
     <a href="#contact">Контакты</a>
   </nav>
 
@@ -57,6 +55,40 @@
   <div class="letterbox letterbox-top"></div>
   <div class="letterbox letterbox-bottom"></div>
 
+  <!--
+    Фоновая карусель — «катушка плёнки» из вертикальных видео.
+    Чтобы подставить свои ролики: в каждом .reel-item добавьте
+    <video src="videos/ваш-файл.mp4" muted loop autoplay playsinline></video>
+    Список ниже дублирован (2 набора по 9) для бесшовной прокрутки —
+    добавляйте видео в оба набора одинаково, по порядку.
+  -->
+  <div class="hero-reel" aria-hidden="true">
+    <div class="hero-reel-sprockets sprockets-top"></div>
+    <div class="hero-reel-track">
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <!-- дубликат набора для бесшовной петли -->
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop autoplay playsinline></video></div>
+    </div>
+    <div class="hero-reel-sprockets sprockets-bottom"></div>
+    <div class="hero-reel-fade"></div>
+  </div>
+
   <div class="hero-frame">
     <span class="frame-corner tl" aria-hidden="true"></span>
     <span class="frame-corner tr" aria-hidden="true"></span>
@@ -65,7 +97,7 @@
 
     <p class="hero-eyebrow">РОЛЬ / ROLE</p>
     <h1 class="hero-title">ИВАН<br>ФАМИЛИЯ</h1>
-    <p class="hero-role">видеомонтажёр — склейка, ритм, цвет, звук</p>
+    <p class="hero-role">видеомонтажёр</p>
 
     <div class="hero-meta">
       <span>REEL 2021–2026</span>
@@ -214,77 +246,10 @@
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
-<section id="process" class="section process" data-clip="PIPELINE.PRPROJ">
-  <div class="section-head">
-    <span class="section-tag">03 — ПРОЦЕСС</span>
-    <h2 class="section-title">Как строится монтаж</h2>
-  </div>
-
-  <ol class="pipeline reveal">
-    <li class="pipeline-step">
-      <span class="pipeline-num">01</span>
-      <div class="pipeline-body">
-        <h3>Черновой монтаж</h3>
-        <p>Отбираю дубли, выстраиваю структуру и ритм истории — без эффектов и цвета, только суть.</p>
-      </div>
-    </li>
-    <li class="pipeline-step">
-      <span class="pipeline-num">02</span>
-      <div class="pipeline-body">
-        <h3>Цветокоррекция</h3>
-        <p>Выравниваю экспозицию и баланс белого между дублями, затем накладываю единый грейд.</p>
-      </div>
-    </li>
-    <li class="pipeline-step">
-      <span class="pipeline-num">03</span>
-      <div class="pipeline-body">
-        <h3>Звук и озвучка</h3>
-        <p>Чищу шумы, свожу музыку и голос, добавляю акценты там, где важна динамика.</p>
-      </div>
-    </li>
-    <li class="pipeline-step">
-      <span class="pipeline-num">04</span>
-      <div class="pipeline-body">
-        <h3>Экспорт и доставка</h3>
-        <p>Рендерю под нужные площадки: разрешение, формат, битрейт, соотношение сторон.</p>
-      </div>
-    </li>
-  </ol>
-</section>
-
-<!-- ============ SKILLS ============ -->
-<section id="skills" class="section skills" data-clip="FORMATS.LIST">
-  <div class="section-head">
-    <span class="section-tag">04 — НАВЫКИ</span>
-    <h2 class="section-title">Инструменты и форматы</h2>
-  </div>
-
-  <div class="chip-group reveal">
-    <span class="chip">Premiere Pro</span>
-    <span class="chip">DaVinci Resolve</span>
-    <span class="chip">After Effects</span>
-    <span class="chip">Final Cut Pro</span>
-    <span class="chip">Audition</span>
-    <span class="chip">Photoshop</span>
-    <span class="chip">CapCut</span>
-    <span class="chip">Frame.io</span>
-  </div>
-
-  <div class="chip-group chip-group--secondary reveal">
-    <span class="chip chip--ghost">Цветокоррекция</span>
-    <span class="chip chip--ghost">Саунд-дизайн</span>
-    <span class="chip chip--ghost">Моушн-титры</span>
-    <span class="chip chip--ghost">Ресайз под соцсети</span>
-    <span class="chip chip--ghost">Субтитры</span>
-    <span class="chip chip--ghost">Работа с большим футажом</span>
-  </div>
-</section>
-
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="section contact" data-clip="EXPORT_SETTINGS.PRESET">
   <div class="section-head">
-    <span class="section-tag">05 — КОНТАКТЫ</span>
+    <span class="section-tag">03 — КОНТАКТЫ</span>
     <h2 class="section-title">Настройки экспорта</h2>
   </div>
 
