@@ -100,3 +100,27 @@
     })
   );
 })();
+document.addEventListener('DOMContentLoaded', () => {
+  const reelVideos = document.querySelectorAll('.hero-reel video');
+
+  reelVideos.forEach((video) => {
+    // Убеждаемся, что звук отключен (требование браузеров для autoplay)
+    video.muted = true;
+    
+    // Принудительный запуск воспроизведения
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.warn('Автозапуск видео был заблокирован браузером:', error);
+      });
+    }
+  });
+
+  // Запуск видео заново, если вкладка снова стала активной
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      reelVideos.forEach((video) => video.play());
+    }
+  });
+});
