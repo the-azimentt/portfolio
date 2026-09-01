@@ -36,7 +36,7 @@
   </button>
 </header>
 
-<!-- ============ TIMELINE SCRUBBER (signature element)ю ============ -->
+<!-- ============ TIMELINE SCRUBBER (signature element) ============ -->
 <div class="timeline-bar" aria-hidden="true">
   <div class="timeline-track" id="timelineTrack">
     <div class="timeline-progress" id="timelineProgress"></div>
@@ -57,33 +57,46 @@
 
   <!--
     Фоновая карусель — «катушка плёнки» из вертикальных видео.
-    Чтобы подставить свои ролики: в каждом .reel-item добавьте
-    <video src="videos/ваш-файл.mp4" muted loop autoplay playsinline></video>
+    На каждый кадр — два медиа-элемента:
+      <video data-src="videos/clip-01.mp4" poster="videos/poster-01.jpg" ...></video>
+      <img class="reel-gif" data-src="videos/clip-01.webp" alt="">
+    - data-src на <video> — полноценный ролик для больших экранов.
+    - data-src на <img class="reel-gif"> — короткая зацикленная анимация
+      (лучше всего — animated WebP, он ощутимо легче GIF при том же виде;
+      GIF тоже подойдёт, просто весит больше). Именно эта картинка
+      показывается на телефонах — так кадр всё равно "живой", но без
+      декодирования видео.
     Список ниже дублирован (2 набора по 9) для бесшовной прокрутки —
-    добавляйте видео в оба набора одинаково, по порядку.
+    заполняйте оба набора одинаково, по порядку, для обоих медиа-элементов.
+
+    Как это переключается: script.js сам решает, что показывать.
+    На экранах шире 860px — включается <video> (data-src). На телефонах —
+    <video> не грузится вовсе, вместо него подставляется <img class="reel-gif">
+    (data-src). Статичный poster у <video> — это просто "заглушка до загрузки"
+    на десктопе, на анимацию он не влияет.
   -->
   <div class="hero-reel" aria-hidden="true">
     <div class="hero-reel-sprockets sprockets-top"></div>
     <div class="hero-reel-track">
-      <div class="reel-item"><video src="videos/video1.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video2.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video3.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video4.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video5.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video6.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video7.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video3.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video5.mp4" muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
       <!-- дубликат набора для бесшовной петли -->
-      <div class="reel-item"><video src="videos/video1.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video2.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video3.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video4.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video5.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video6.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video7.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video3.mp4" muted loop autoplay playsinline></video></div>
-      <div class="reel-item"><video src="videos/video5.mp4" muted loop autoplay playsinline></video></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
+      <div class="reel-item"><video muted loop playsinline preload="none"></video><img class="reel-gif" alt="" loading="lazy"></div>
     </div>
     <div class="hero-reel-sprockets sprockets-bottom"></div>
     <div class="hero-reel-fade"></div>
@@ -295,23 +308,53 @@
       </div>
     </article>
 
-  </div>
-</section>
+    <article class="clip-card reveal" style="--grade:#9AACC0">
+      <div class="clip-thumb clip-thumb--c">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">00:35</span>
+      </div>
+      <div class="clip-info">
+        <h3>Промо мобильного приложения</h3>
+        <p>App Store / соцсети · UI-скринкаст + моушн-акценты</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>9:16</span><span>After Effects</span></div>
+        <details class="clip-details">
+          <summary>Подробнее</summary>
+          <div class="clip-details-body">
+            <strong>Заказчик:</strong> стартап в сфере доставки<br>
+            <strong>ТЗ:</strong> ролик для App Store и сторис, монтаж скринкаста интерфейса под текстовые акценты
+          </div>
+        </details>
+      </div>
+    </article>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>МОНТАЖ</span><span class="dot">•</span>
-    <span>ЦВЕТ</span><span class="dot">•</span>
-    <span>ЗВУК</span><span class="dot">•</span>
-    <span>РИТМ</span><span class="dot">•</span>
-    <span>ЭКСПОРТ</span><span class="dot">•</span>
-    <span>МОНТАЖ</span><span class="dot">•</span>
-    <span>ЦВЕТ</span><span class="dot">•</span>
-    <span>ЗВУК</span><span class="dot">•</span>
-    <span>РИТМ</span><span class="dot">•</span>
-    <span>ЭКСПОРТ</span><span class="dot">•</span>
+    <article class="clip-card reveal" style="--grade:#D8C4A8">
+      <div class="clip-thumb clip-thumb--d">
+        <span class="clip-perf" aria-hidden="true"></span>
+        <button class="clip-play" aria-label="Воспроизвести">▶</button>
+        <span class="clip-duration">04:12</span>
+      </div>
+      <div class="clip-info">
+        <h3>Свадебный фильм</h3>
+        <p>Личное видео · сторителлинг, живой звук, цветокоррекция</p>
+        <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>DaVinci Resolve</span></div>
+        <details class="clip-details">
+          <summary>Подробнее</summary>
+          <div class="clip-details-body">
+            <strong>Заказчик:</strong> частный клиент<br>
+            <strong>ТЗ:</strong> фильм со свадьбы на 4 минуты, сборка из многокамерного материала, мягкий тёплый грейд
+          </div>
+        </details>
+      </div>
+    </article>
+
   </div>
-</div>
+
+  <button class="reel-more" id="reelMore" type="button" aria-expanded="false">
+    <span class="reel-more-label">ЕЩЁ ДУБЛИ</span>
+    <span class="reel-more-count" id="reelMoreCount">+4</span>
+  </button>
+</section>
 
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="section contact" data-clip="EXPORT_SETTINGS.PRESET">
