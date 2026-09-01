@@ -195,21 +195,6 @@ main{ position: relative; z-index: 1; }
 .section-divider span:nth-child(9){ height: 7px; animation-delay: 1.2s; }
 @keyframes dividerPulse{ 0%,100%{ transform: scaleY(0.4); } 50%{ transform: scaleY(1); } }
 
-.ticker{
-  overflow: hidden; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
-  padding: 14px 0;
-}
-.ticker-track{
-  display: flex; width: max-content; gap: 28px;
-  animation: tickerScroll 22s linear infinite;
-}
-.ticker-track span{
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
-  color: var(--grey-dim); white-space: nowrap;
-}
-.ticker-track span.dot{ color: var(--line); }
-@keyframes tickerScroll{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
-
 .reveal{ opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.is-visible{ opacity: 1; transform: translateY(0); }
 
@@ -254,9 +239,16 @@ main{ position: relative; z-index: 1; }
   border: 1px solid rgba(244,244,242,0.06);
   filter: grayscale(0.5) brightness(0.5) contrast(1.05);
 }
-.reel-item video{
+.reel-item video,
+.reel-item .reel-gif{
+  position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
+.reel-item .reel-gif{ display: none; }
+/* На мобильных script.js добавляет этот класс: видео скрывается,
+   вместо него показывается лёгкая зацикленная анимация (GIF/WebP). */
+.reel-item.reel-item--gif video{ display: none; }
+.reel-item.reel-item--gif .reel-gif{ display: block; }
 @keyframes heroReelScroll{
   from{ transform: translateX(0); }
   to{ transform: translateX(-50%); }
@@ -440,6 +432,27 @@ main{ position: relative; z-index: 1; }
 }
 .clip-details-body strong{ color: var(--grey-lt); font-weight: 600; }
 
+/* ---- "ещё дубли" — мобильная кнопка раскрытия сетки ---- */
+.reel-more{
+  display: none;
+  margin: 36px auto 0; padding: 14px 24px;
+  align-items: center; justify-content: center; gap: 10px;
+  border: 1px solid var(--line); border-radius: 40px;
+  background: var(--panel);
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+  color: var(--grey-lt);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.reel-more:hover{ border-color: var(--grey); color: var(--white); }
+.reel-more-count{
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 18px; padding: 0 5px;
+  border-radius: 9px; background: var(--sage); color: #0A0A0B;
+  font-size: 10.5px; font-weight: 700;
+}
+.reel-more[aria-expanded="true"] .reel-more-count{ transform: rotate(180deg); }
+.reel-more[aria-expanded="true"] .reel-more-label::after{ content: ''; }
+
 /* ===================================================================
    CONTACT — export panel
 =================================================================== */
@@ -523,4 +536,10 @@ main{ position: relative; z-index: 1; }
   .letterbox{ height: 28px; }
   .reel-item{ width: clamp(170px, 48vw, 220px); }
   .hero-reel-track{ gap: 10px; }
+
+  /* На телефоне сначала показываем 4 избранные работы, остальные —
+     по кнопке "ЕЩЁ ДУБЛИ", чтобы не заставлять долго пролистывать. */
+  .reel-grid .clip-card:nth-child(n+5){ display: none; }
+  .reel-grid.reel-grid--expanded .clip-card:nth-child(n+5){ display: flex; }
+  .reel-more{ display: flex; }
 }
