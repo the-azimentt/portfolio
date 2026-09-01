@@ -81,6 +81,78 @@
 })();
 
 // ============================================================
+// Фоновая карусель в hero: на больших экранах — живое видео,
+// на телефонах — лёгкая зацикленная GIF/WebP-анимация вместо
+// видео (кадр всё равно двигается, но без декодирования видео,
+// которое и лагает на мобильных).
+// ============================================================
+(function () {
+  const items = Array.from(document.querySelectorAll('.hero-reel .reel-item'));
+  if (items.length === 0) return;
+
+  const desktopQuery = window.matchMedia('(min-width: 861px)');
+
+  function syncItems() {
+    const isDesktop = desktopQuery.matches;
+    items.forEach((item) => {
+      const video = item.querySelector('video');
+      const gif = item.querySelector('.reel-gif');
+
+      if (isDesktop) {
+        item.classList.remove('reel-item--gif');
+        // освобождаем GIF/WebP из памяти на десктопе — там она не нужна
+        if (gif && gif.getAttribute('src')) gif.removeAttribute('src');
+
+        const src = video && video.dataset.src;
+        if (video && src && video.getAttribute('src') !== src) {
+          video.setAttribute('src', src);
+          video.load();
+          video.play().catch(() => {});
+        }
+      } else {
+        item.classList.add('reel-item--gif');
+        // видео на телефоне не грузим и не декодируем вовсе
+        if (video && video.getAttribute('src')) {
+          video.pause();
+          video.removeAttribute('src');
+          video.load();
+        }
+        const gifSrc = gif && gif.dataset.src;
+        if (gif && gifSrc && gif.getAttribute('src') !== gifSrc) {
+          gif.setAttribute('src', gifSrc);
+        }
+      }
+    });
+  }
+
+  syncItems();
+  if (desktopQuery.addEventListener) {
+    desktopQuery.addEventListener('change', syncItems);
+  } else if (desktopQuery.addListener) {
+    // старые браузеры / Safari < 14
+    desktopQuery.addListener(syncItems);
+  }
+})();
+
+// ============================================================
+// Кнопка "Ещё дубли" — раскрывает остальные карточки работ
+// на мобильных экранах (по умолчанию видно 4 из 8).
+// ============================================================
+(function () {
+  const btn = document.getElementById('reelMore');
+  const grid = document.querySelector('.reel-grid');
+  const countEl = document.getElementById('reelMoreCount');
+  if (!btn || !grid) return;
+
+  btn.addEventListener('click', () => {
+    const expanded = grid.classList.toggle('reel-grid--expanded');
+    btn.setAttribute('aria-expanded', String(expanded));
+    if (countEl) countEl.textContent = expanded ? '−4' : '+4';
+    btn.querySelector('.reel-more-label').textContent = expanded ? 'СКРЫТЬ' : 'ЕЩЁ ДУБЛИ';
+  });
+})();
+
+// ============================================================
 // Mobile nav toggle
 // ============================================================
 (function () {
@@ -100,27 +172,3 @@
     })
   );
 })();
-document.addEventListener('DOMContentLoaded', () => {
-  const reelVideos = document.querySelectorAll('.hero-reel video');
-
-  reelVideos.forEach((video) => {
-    // Убеждаемся, что звук отключен (требование браузеров для autoplay)
-    video.muted = true;
-    
-    // Принудительный запуск воспроизведения
-    const playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.warn('Автозапуск видео был заблокирован браузером:', error);
-      });
-    }
-  });
-
-  // Запуск видео заново, если вкладка снова стала активной
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      reelVideos.forEach((video) => video.play());
-    }
-  });
-});
