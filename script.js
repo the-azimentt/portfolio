@@ -135,6 +135,39 @@
 })();
 
 // ============================================================
+// Карточки "Избранные видео" — реальный ролик грузится и
+// проигрывается только по клику на кнопку play (preload="none"),
+// а не сразу при открытии страницы. Так тяжёлые файлы не тянутся
+// все разом и не тормозят загрузку сайта.
+// ============================================================
+(function () {
+  const playButtons = Array.from(document.querySelectorAll('.clip-play'));
+  if (playButtons.length === 0) return;
+
+  playButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const thumb = btn.closest('.clip-thumb');
+      const video = thumb && thumb.querySelector('.clip-video');
+      if (!video) return;
+
+      const src = video.dataset.src;
+      if (!src) return; // ссылка на файл ещё не заполнена
+
+      if (!video.getAttribute('src')) {
+        thumb.classList.add('is-loading');
+        video.setAttribute('src', src);
+        video.setAttribute('controls', '');
+        video.load();
+        video.addEventListener('loadeddata', () => thumb.classList.remove('is-loading'), { once: true });
+      }
+
+      thumb.classList.add('is-active');
+      video.play().catch(() => {});
+    });
+  });
+})();
+
+// ============================================================
 // Кнопка "Ещё дубли" — раскрывает остальные карточки работ
 // на мобильных экранах (по умолчанию видно 4 из 8).
 // ============================================================
