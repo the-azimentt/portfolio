@@ -294,11 +294,6 @@ main{ position: relative; z-index: 1; }
   letter-spacing: 0.01em; color: var(--white);
   white-space: nowrap;
 }
-.hero-title::after{
-  content: '▍'; display: inline-block; margin-left: 0.06em;
-  font-size: 0.5em; color: var(--sage); vertical-align: baseline;
-  animation: cursorBlink 1.1s steps(1) infinite;
-}
 .hero-role{
   margin-top: 22px; font-size: clamp(15px, 2vw, 19px);
   color: var(--grey-lt); font-weight: 400;
