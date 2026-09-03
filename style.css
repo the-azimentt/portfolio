@@ -50,7 +50,7 @@ button{ font: inherit; background: none; border: none; color: inherit; cursor: p
 ::selection{ background: var(--sage); color: #0A0A0B; }
 
 /* ===================================================================
-   TEXTURE LAYERS — grain + scanlines (abstract, ambient personality)
+   TEXTURE LAYERS — grain + scanlines
 =================================================================== */
 .grain{
   position: fixed; inset: 0; z-index: 2; pointer-events: none;
@@ -111,7 +111,7 @@ button{ font: inherit; background: none; border: none; color: inherit; cursor: p
 .nav-burger span{ display:block; height:1px; background: var(--white); }
 
 /* ===================================================================
-   TIMELINE SCRUBBER — signature element
+   TIMELINE SCRUBBER
 =================================================================== */
 .timeline-bar{
   position: fixed; top: 58px; left: 0; right: 0; z-index: 39;
@@ -173,7 +173,6 @@ main{ position: relative; z-index: 1; }
   color: var(--white);
 }
 
-/* ---- small ambient decorations ---- */
 .section-divider{
   display: flex; align-items: flex-end; justify-content: center; gap: 4px;
   max-width: var(--container); margin: 0 auto; padding: 0 var(--edge);
@@ -215,7 +214,6 @@ main{ position: relative; z-index: 1; }
 .letterbox-top{ top:0; }
 .letterbox-bottom{ bottom:0; }
 
-/* ---- background filmstrip carousel (vertical clips, reel-style) ---- */
 .hero-reel{
   position: absolute; inset: 0; z-index: 0;
   display: flex; align-items: center;
@@ -245,8 +243,6 @@ main{ position: relative; z-index: 1; }
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .reel-item .reel-gif{ display: none; }
-/* На мобильных script.js добавляет этот класс: видео скрывается,
-   вместо него показывается лёгкая зацикленная анимация (GIF/WebP). */
 .reel-item.reel-item--gif video{ display: none; }
 .reel-item.reel-item--gif .reel-gif{ display: block; }
 @keyframes heroReelScroll{
@@ -376,6 +372,13 @@ main{ position: relative; z-index: 1; }
 .clip-thumb--c{ background: linear-gradient(135deg, #171a1c 0%, #1c2126 55%, #0f1214 100%); }
 .clip-thumb--d{ background: linear-gradient(135deg, #1a181c 0%, #211d26 55%, #120f14 100%); }
 
+/* Превью-картинки для видео */
+.clip-poster{
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; transition: opacity 0.25s ease;
+}
+.clip-thumb.is-active .clip-poster{ opacity: 0; pointer-events: none; }
+
 .clip-perf{
   position: absolute; top:0; left:0; right:0; height: 10px; z-index: 1;
   background-image: radial-gradient(circle, rgba(0,0,0,0.65) 2px, transparent 2.2px);
@@ -400,9 +403,6 @@ main{ position: relative; z-index: 1; }
 }
 .clip-card:hover .clip-play{ transform: scale(1.08); background: rgba(244,244,242,0.08); }
 
-/* Реальное видео карточки — грузится и проигрывается только по клику
-   на .clip-play (preload="none"), чтобы не тянуть тяжёлые файлы всем
-   подряд при открытии страницы. */
 .clip-video{
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; display: none; background: #000; z-index: 0;
@@ -413,7 +413,7 @@ main{ position: relative; z-index: 1; }
 .clip-thumb.is-active .clip-perf,
 .clip-thumb.is-active .clip-duration{ opacity: 0; pointer-events: none; }
 .clip-duration{
-  position: absolute; bottom: 10px; right: 12px;
+  position: absolute; bottom: 10px; right: 12px; z-index: 2;
   font-family: var(--font-mono); font-size: 11px; color: var(--grey-lt);
   background: rgba(10,10,11,0.6); padding: 2px 7px; border-radius: 4px;
 }
@@ -458,7 +458,6 @@ main{ position: relative; z-index: 1; }
 }
 .clip-details-body strong{ color: var(--grey-lt); font-weight: 600; }
 
-/* ---- "ещё дубли" — мобильная кнопка раскрытия сетки ---- */
 .reel-more{
   display: none;
   margin: 36px auto 0; padding: 14px 24px;
@@ -477,7 +476,6 @@ main{ position: relative; z-index: 1; }
   font-size: 10.5px; font-weight: 700;
 }
 .reel-more[aria-expanded="true"] .reel-more-count{ transform: rotate(180deg); }
-.reel-more[aria-expanded="true"] .reel-more-label::after{ content: ''; }
 
 /* ===================================================================
    CONTACT — export panel
@@ -563,8 +561,6 @@ main{ position: relative; z-index: 1; }
   .reel-item{ width: clamp(170px, 48vw, 220px); }
   .hero-reel-track{ gap: 10px; }
 
-  /* На телефоне сначала показываем 4 избранные работы, остальные —
-     по кнопке "ЕЩЁ ДУБЛИ", чтобы не заставлять долго пролистывать. */
   .reel-grid .clip-card:nth-child(n+5){ display: none; }
   .reel-grid.reel-grid--expanded .clip-card:nth-child(n+5){ display: flex; }
   .reel-more{ display: flex; }
