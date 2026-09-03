@@ -36,7 +36,7 @@
   </button>
 </header>
 
-<!-- ============ TIMELINE SCRUBBER (signature element) ============ -->
+<!-- ============ TIMELINE SCRUBBER ============ -->
 <div class="timeline-bar" aria-hidden="true">
   <div class="timeline-track" id="timelineTrack">
     <div class="timeline-progress" id="timelineProgress"></div>
@@ -55,26 +55,6 @@
   <div class="letterbox letterbox-top"></div>
   <div class="letterbox letterbox-bottom"></div>
 
-  <!--
-    Фоновая карусель — «катушка плёнки» из вертикальных видео.
-    На каждый кадр — два медиа-элемента:
-      <video data-src="videos/clip-01.mp4" poster="videos/poster-01.jpg" ...></video>
-      <img class="reel-gif" data-src="videos/clip-01.webp" alt="">
-    - data-src на <video> — полноценный ролик для больших экранов.
-    - data-src на <img class="reel-gif"> — короткая зацикленная анимация
-      (лучше всего — animated WebP, он ощутимо легче GIF при том же виде;
-      GIF тоже подойдёт, просто весит больше). Именно эта картинка
-      показывается на телефонах — так кадр всё равно "живой", но без
-      декодирования видео.
-    Список ниже дублирован (2 набора по 9) для бесшовной прокрутки —
-    заполняйте оба набора одинаково, по порядку, для обоих медиа-элементов.
-
-    Как это переключается: script.js сам решает, что показывать.
-    На экранах шире 860px — включается <video> (data-src). На телефонах —
-    <video> не грузится вовсе, вместо него подставляется <img class="reel-gif">
-    (data-src). Статичный poster у <video> — это просто "заглушка до загрузки"
-    на десктопе, на анимацию он не влияет.
-  -->
   <div class="hero-reel" aria-hidden="true">
     <div class="hero-reel-sprockets sprockets-top"></div>
     <div class="hero-reel-track">
@@ -150,7 +130,7 @@
     <div class="meta-grid">
       <div class="meta-row">
         <span class="meta-label">Имя</span>
-        <span class="meta-value">Azimentt</span>
+        <span class="meta-value">Азим</span>
       </div>
       <div class="meta-row">
         <span class="meta-label">Специализация</span>
@@ -162,14 +142,12 @@
       </div>
       <div class="meta-row">
         <span class="meta-label">Форматы</span>
-        <span class="meta-value">Реклама, клипы, YouTube, соцсети, документалистика</span>
+        <span class="meta-value">Reels, YouTube shorts, TikTok, горизонтальные видео YouTube</span>
       </div>
       <div class="meta-row meta-row-wide">
-        <span class="meta-label">Описание</span>
+        <span class="meta-label">О себе</span>
         <span class="meta-value">
-          Собираю из отснятого материала историю с чётким ритмом и понятной драматургией.
-          Умею работать с большим объёмом футажа, держать дедлайны и объяснять решения
-          по монтажу простым языком — без профессионального жаргона, если он не нужен.
+          Я монтажер с опытом 5 лет, монтирую вертикальные видео для Instagram, YouTube, TikTok. Так же имею опыт работы с горизонтальными видео для YouTube.
         </span>
       </div>
     </div>
@@ -183,7 +161,7 @@
       <svg class="reel-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2 4.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
       02 — РАБОТЫ
     </span>
-    <h2 class="section-title">Избранные клипы</h2>
+    <h2 class="section-title">Избранные видео</h2>
   </div>
 
   <div class="reel-grid">
@@ -191,14 +169,16 @@
     <article class="clip-card reveal" style="--grade:#9CAF97">
       <div class="clip-thumb clip-thumb--a">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo1.jpg" alt="Превью видео 1" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo1.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">02:14</span>
       </div>
       <div class="clip-info">
         <h3>Бренд-ролик «Северный свет»</h3>
-        <p>Коммерческая реклама · цветокоррекция + монтаж</p>
+        <!-- <p>Коммерческая реклама · цветокоррекция + монтаж</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>Premiere Pro</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -206,20 +186,23 @@
             <strong>ТЗ:</strong> имиджевый ролик к запуску новой коллекции, акцент на фактуру ткани и цвет
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#D8C4A8">
       <div class="clip-thumb clip-thumb--b">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo2.jpg" alt="Превью видео 2" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo2.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">00:47</span>
       </div>
       <div class="clip-info">
         <h3>Reels для бренда одежды</h3>
-        <p>Соцсети · динамичный монтаж под тренды</p>
+        <!-- <p>Соцсети · динамичный монтаж под тренды</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>9:16</span><span>DaVinci Resolve</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -227,20 +210,23 @@
             <strong>ТЗ:</strong> серия из 5 вертикальных роликов под тренды недели, монтаж за 24 часа
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#9AACC0">
       <div class="clip-thumb clip-thumb--c">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo3.jpg" alt="Превью видео 3" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo3.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">08:32</span>
       </div>
       <div class="clip-info">
         <h3>Документальный мини-фильм</h3>
-        <p>YouTube · сторителлинг, интершум, титры</p>
+        <!-- <p>YouTube · сторителлинг, интершум, титры</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>2.39:1</span><span>After Effects</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -248,20 +234,23 @@
             <strong>ТЗ:</strong> мини-фильм на 8 минут для YouTube, полный цикл — от чернового монтажа до сведения звука
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#B7A8C9">
       <div class="clip-thumb clip-thumb--d">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo4.jpg" alt="Превью видео 4" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo4.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">03:05</span>
       </div>
       <div class="clip-info">
         <h3>Музыкальный клип «Тени»</h3>
-        <p>Клип · монтаж под ритм, цветовой грейд</p>
+        <!-- <p>Клип · монтаж под ритм, цветовой грейд</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>DaVinci Resolve</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -269,20 +258,23 @@
             <strong>ТЗ:</strong> клип на сингл, синхронизация монтажа с партитурой, тёмный контрастный грейд
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#9CAF97">
       <div class="clip-thumb clip-thumb--a">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo5.jpg" alt="Превью видео 5" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo5.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">01:30</span>
       </div>
       <div class="clip-info">
         <h3>Промо мероприятия</h3>
-        <p>Афтер-муви · быстрый оборот, live-съёмка</p>
+        <!-- <p>Афтер-муви · быстрый оборот, live-съёмка</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>Premiere Pro</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -290,20 +282,23 @@
             <strong>ТЗ:</strong> афтер-муви за 48 часов после события, короткий динамичный формат
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#D8C4A8">
       <div class="clip-thumb clip-thumb--b">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo6.jpg" alt="Превью видео 6" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo6.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">00:59</span>
       </div>
       <div class="clip-info">
         <h3>Shorts для блогера</h3>
-        <p>Соцсети · субтитры, звуковые акценты</p>
+        <!-- <p>Соцсети · субтитры, звуковые акценты</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>9:16</span><span>CapCut</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -311,20 +306,23 @@
             <strong>ТЗ:</strong> еженедельные шортсы, монтаж под удержание внимания в первые 3 секунды
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#9AACC0">
       <div class="clip-thumb clip-thumb--c">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo7.jpg" alt="Превью видео 7" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo7.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">00:35</span>
       </div>
       <div class="clip-info">
         <h3>Промо мобильного приложения</h3>
-        <p>App Store / соцсети · UI-скринкаст + моушн-акценты</p>
+        <!-- <p>App Store / соцсети · UI-скринкаст + моушн-акценты</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>9:16</span><span>After Effects</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -332,20 +330,23 @@
             <strong>ТЗ:</strong> ролик для App Store и сторис, монтаж скринкаста интерфейса под текстовые акценты
           </div>
         </details>
+        -->
       </div>
     </article>
 
     <article class="clip-card reveal" style="--grade:#D8C4A8">
       <div class="clip-thumb clip-thumb--d">
         <span class="clip-perf" aria-hidden="true"></span>
+        <img class="clip-poster" src="videos/Pvideo8.jpg" alt="Превью видео 8" loading="lazy">
         <video class="clip-video" preload="none" playsinline data-src="https://cdn.jsdelivr.net/gh/the-azimentt/portfolio@main/videos/Fvideo8.mp4"></video>
         <button class="clip-play" aria-label="Воспроизвести">▶</button>
         <span class="clip-duration">04:12</span>
       </div>
       <div class="clip-info">
         <h3>Свадебный фильм</h3>
-        <p>Личное видео · сторителлинг, живой звук, цветокоррекция</p>
+        <!-- <p>Личное видео · сторителлинг, живой звук, цветокоррекция</p> -->
         <div class="clip-tags"><span class="grade-dot"></span><span>16:9</span><span>DaVinci Resolve</span></div>
+        <!--
         <details class="clip-details">
           <summary>Подробнее</summary>
           <div class="clip-details-body">
@@ -353,6 +354,7 @@
             <strong>ТЗ:</strong> фильм со свадьбы на 4 минуты, сборка из многокамерного материала, мягкий тёплый грейд
           </div>
         </details>
+        -->
       </div>
     </article>
 
@@ -377,23 +379,19 @@
   <div class="export-panel reveal">
     <div class="export-row">
       <span class="export-label">Почта</span>
-      <a class="export-value" href="mailto:hello@example.com">hello@example.com</a>
+      <a class="export-value" href="mailto:zimmezhvedilov@gmail.com">zimmezhvedilov@gmail.com</a>
     </div>
     <div class="export-row">
       <span class="export-label">Telegram</span>
-      <a class="export-value" href="https://t.me/username" target="_blank" rel="noopener">@username</a>
+      <a class="export-value" href="https://t.me/the_aziment" target="_blank" rel="noopener">@the_aziment</a>
     </div>
     <div class="export-row">
-      <span class="export-label">Behance</span>
-      <a class="export-value" href="https://behance.net/username" target="_blank" rel="noopener">behance.net/username</a>
-    </div>
-    <div class="export-row">
-      <span class="export-label">Vimeo</span>
-      <a class="export-value" href="https://vimeo.com/username" target="_blank" rel="noopener">vimeo.com/username</a>
+      <span class="export-label">WhatsApp</span>
+      <a class="export-value" href="https://wa.me/79886354696" target="_blank" rel="noopener">89886354696</a>
     </div>
 
-    <a href="mailto:hello@example.com" class="export-cta">
-      ЭКСПОРТ СООБЩЕНИЯ <span>→</span>
+    <a href="https://t.me/the_aziment" target="_blank" rel="noopener" class="export-cta">
+      НАПИСАТЬ В TELEGRAM <span>→</span>
     </a>
   </div>
 </section>
